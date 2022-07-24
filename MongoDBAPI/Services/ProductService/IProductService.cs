@@ -13,5 +13,9 @@
         Task<Product> UpdateProductAsync(Product productToAdd);
 
         Task DeleteProductAsync(string productIdToDelete);
+
+        Task<List<Product>> GetProductsByProductCategoryName(string productCategoryName);
+
+        Task<List<Product>> GetRelatedProductsByProductId(string productId);
     }
 }

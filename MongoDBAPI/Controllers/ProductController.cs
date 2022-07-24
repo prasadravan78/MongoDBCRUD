@@ -53,5 +53,23 @@
 
             return NoContent();
         }
+
+        [HttpPost]
+        [Route("GetProductsByProductCategoryName")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductsByProductCategoryName(string productCategoryName)
+        {
+            var products = await productService.GetProductsByProductCategoryName(productCategoryName);
+
+            return Ok(products);
+        }
+
+        [HttpPost]
+        [Route("GetRelatedProductsByProductId")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetRelatedProductsByProductId(string productId)
+        {
+            var products = await productService.GetRelatedProductsByProductId(productId);
+
+            return Ok(products);
+        }
     }
 }

@@ -55,5 +55,17 @@
         {
             await productCollection.DeleteOneAsync<Product>(k => k.Id == productIdToDelete);
         }
+
+        public async Task<List<Product>> GetProductsByProductCategoryName(string productCategoryName)
+        {
+            return await productCollection.Find(k => true && k.ProductCategory.Name == productCategoryName).ToListAsync();
+        }
+
+        public async Task<List<Product>> GetRelatedProductsByProductId(string productId)
+        {
+            var product = await productCollection.Find(k => true && k.Id == productId).FirstOrDefaultAsync();
+
+            return product.RelatedProducts;
+        }
     }
 }
